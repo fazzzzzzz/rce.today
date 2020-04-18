@@ -1,6 +1,6 @@
 title: RCE.today
 
-tagline: RCE(Remote command execution)
+tagline: 专注网络安全
 
 description: >-                        # used by seo meta and the atom feed
   A minimal, portfolio, sidebar,
@@ -17,8 +17,6 @@ avatar: /assets/img/sample/avatar.jpg   # support internet resources
 github:
   username: github_username             # change to your github username
 
-twitter:
-  username: twitter_username            # change to your twitter username
 
 social:
   name: your_full_name                  # it will shows as the copyright owner in Footer
