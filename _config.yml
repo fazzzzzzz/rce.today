@@ -12,10 +12,8 @@ author: admin                  # change to your full name
 
 avatar: /assets/img/sample/avatar.png   # support internet resources
 
-
 social:
   name: RCE.today                 # it will shows as the copyright owner in Footer
-  email: example@doamin.com             # change to your email address
   links:
     - https://rce.today    # change to your twitter homepage
 
