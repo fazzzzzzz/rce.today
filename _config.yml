@@ -1,16 +1,6 @@
-# The Site Settings
-# v2.0
-# https://github.com/cotes2020/jekyll-theme-chirpy
-# © 2017-2019 Cotes Chung
-# MIT licensed
+title: RCE.today
 
-
-# jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
-#--------------------------
-
-title: RCE.today                          # the main title
-
-tagline: A text-focused Jekyll theme.  # it will display as the sub-title
+tagline: RCE(Remote command execution)
 
 description: >-                        # used by seo meta and the atom feed
   A minimal, portfolio, sidebar,
