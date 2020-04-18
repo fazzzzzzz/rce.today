@@ -1,11 +1,3 @@
-#!/bin/bash
-#
-# Initial the Categories/Tags pages and Lastmod for posts.
-# v2.0
-# https://github.com/cotes2020/jekyll-theme-chirpy
-# © 2019 Cotes Chung
-# Published under MIT License
-
 set -eu
 
 CATEGORIES=false
@@ -32,9 +24,8 @@ check_status() {
 
 
 update_files() {
-  bash _scripts/sh/create_pages.sh
-  bash _scripts/sh/dump_lastmod.sh
-
+  bash ./tools/create_pages.sh
+  bash ./tools/dump_lastmod.sh
   find . | grep -E "(__pycache__|\.pyc|\.pyo$)" | xargs rm -rf
 }
 

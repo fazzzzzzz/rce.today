@@ -1,16 +1,3 @@
-#!/bin/bash
-#
-# Find out the posts that have been modified and record
-# its lastmod information to file '_data/updates.yml'
-#
-# Usage:
-#     Call from the '_posts' sibling directory.
-#
-# v2.2
-# https://github.com/cotes2020/jekyll-theme-chirpy
-# © 2020 Cotes Chung
-# Published under MIT License
-
 set -eu
 
 POST_DIR=_posts
