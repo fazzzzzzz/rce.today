@@ -12,11 +12,6 @@ author: admin                  # change to your full name
 
 avatar: /assets/img/sample/avatar.png   # support internet resources
 
-github:
-  username: github_username             # change to your github username
-
-twitter:
-  username: twitter_username            # change to your twitter username
 
 social:
   name: RCE.today                 # it will shows as the copyright owner in Footer
