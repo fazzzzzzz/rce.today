@@ -1,11 +1,3 @@
-/*!
-* The syntax dark mode styles.
-* v2.0
-* https://github.com/cotes2020/jekyll-theme-chirpy
-* © 2018-2019 Cotes Chung
-* MIT Licensed
-*/
-
 @mixin dark-syntax {
   /* syntax highlight colors from https://raw.githubusercontent.com/jwarby/pygments-css/master/monokai.css */
   .highlight pre { background-color: #272822; }

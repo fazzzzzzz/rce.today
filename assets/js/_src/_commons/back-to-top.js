@@ -1,6 +1,3 @@
-/*
-Reference: https://bootsnipp.com/snippets/featured/link-to-top-page
-*/
 $(window).scroll(function() {
   if ($(this).scrollTop() > 50
       && $('#sidebar-trigger').css('display') == 'none') {
