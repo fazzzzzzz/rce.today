@@ -125,6 +125,11 @@ defaults:
       path: assets/data
     values:
       layout: compress
+  -
+    scope:
+      path: uploads
+    values:
+      layout: compress
 
 
 sass:
@@ -153,6 +158,7 @@ exclude:
 sitemap_exclude:  # Sitemap will exclude the following items.
   fuzzy:
     - /assets/
+    - /uploads/
   accurate:
     - /norobots/
     - /tabs/
