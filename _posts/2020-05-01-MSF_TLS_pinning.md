@@ -56,3 +56,7 @@ set StagerVerifySSLCert true
 set exitonsession false
 run -j -z
 ```
+
+# 在MacOS上的tips
+
+使用完msfconsole后，会有残留进程，建议运行```msfdb stop```结束。
