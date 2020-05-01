@@ -10,7 +10,7 @@ tags: [流量加密, MSF, 免杀]
 
 利用证书锁定过掉流量监控，例如赛某的端点防护。
 
-rapid7官方将之称为```Paranoid Mode(偏执模式)```，相关wiki：[github.com/rapid7/metasploit-framework/wiki/Meterpreter-Paranoid-Mode](https://github.com/rapid7/metasploit-framework/wiki/Meterpreter-Paranoid-Mode)
+Rapid7将之称为```Paranoid Mode(偏执模式)```，相关wiki：[github.com/rapid7/metasploit-framework/wiki/Meterpreter-Paranoid-Mode](https://github.com/rapid7/metasploit-framework/wiki/Meterpreter-Paranoid-Mode)
 
 # 创建证书
 
