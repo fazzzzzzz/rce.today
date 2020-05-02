@@ -35,7 +35,7 @@ java -noverify -javaagent:PatchBurpSuite.jar -jar burpsuite_pro_v2020.4.jar
 
 下面对`build.gradle`文件进行简单配置，代码如下：
 
-```groovy dsl
+```groovy
 plugins {
     id 'java'
     id "com.github.johnrengelman.shadow" version "5.2.0"
