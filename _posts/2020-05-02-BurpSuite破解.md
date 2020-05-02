@@ -18,7 +18,7 @@ Loader下载: [PatchBurpSuite.jar](/uploads/PatchBurpSuite.jar)
 java -noverify -javaagent:PatchBurpSuite.jar -jar burpsuite_pro_v2020.4.jar
 ```
 
-算号器为SCZ开发的最后一版激活工具，双击打开即可，Loader需要用上面👆的，下文介绍开发过程，可以自行编译。
+算号器为SCZ开发的最后一版激活工具，双击打开即可。Loader需要用上面👆的，下文介绍开发过程，可自行编译。
 
 # 初始化项目
 
@@ -35,7 +35,7 @@ java -noverify -javaagent:PatchBurpSuite.jar -jar burpsuite_pro_v2020.4.jar
 
 下面对`build.gradle`文件进行简单配置，代码如下：
 
-```
+```groovy dsl
 plugins {
     id 'java'
     id "com.github.johnrengelman.shadow" version "5.2.0"
