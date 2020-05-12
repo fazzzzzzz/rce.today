@@ -2,4 +2,4 @@
 title: RCE.today
 ---
 
-> ᕙ(`▿´)ᕗ
+> Be a voice. Not an echo.
