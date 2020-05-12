@@ -34,6 +34,6 @@ tags: [抓包, 流量加密]
 
 ## Windows
 
-```cmd
+```powershell
 "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" –ignore-certificate-errors
 ```
