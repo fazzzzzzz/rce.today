@@ -18,7 +18,7 @@ tags: [抓包, 流量加密]
 
 # 方法二
 
-在chrome://net-internals/#hsts页面
+地址栏输入：`chrome://net-internals/#hsts`
 
 在下方的`Delete domain security policies`输入域名，然后点击删除即可。
 
