@@ -10,13 +10,13 @@ tags: [Electron, 逆向]
 
 某些Electron程序在发布时会关闭DevTools功能，而Electron打包时会把网站打包到`asar`文件下，包括配置文件`main.js`。通过[asar](https://github.com/electron/asar)工具可以将其重打包，开启DevTools，以便进一步逆向。
 
-# 安装
+# 安装asar
 
 ```shell
 npm install asar -g
 ```
 
-# 解压asar至任意目录
+# 解包asar文件至任意目录
 
 ```shell
 asar extract <asar文件路径> <目录路径>
@@ -36,7 +36,7 @@ asar extract <asar文件路径> <目录路径>
 mainWindow.webContents.openDevTools();
 ```
 
-# 打包目录至asar
+# 打包目录至asar文件中
 
 ```shell
 asar pack <目录路径> <asar文件路径> 
