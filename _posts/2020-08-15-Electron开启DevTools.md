@@ -26,9 +26,7 @@ asar extract <asar文件路径> <目录路径>
 
 # 修改`main.js`
 
-找到`new BrowserWindow()`的变量
-
-例如`mainWindow = new BrowserWindow`
+找到创建新窗口的地方，例如`mainWindow = new BrowserWindow(...)`
 
 在下方添加一行
 
