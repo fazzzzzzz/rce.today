@@ -3,7 +3,7 @@ title: Electron程序开启DevTools
 author: Admin
 date: 2020-08-15 20:49:00 +0800
 categories: [逆向]
-tags: [Electron]
+tags: [Electron, 逆向]
 ---
 
 # 开宗明义
