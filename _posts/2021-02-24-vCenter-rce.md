@@ -114,5 +114,5 @@ if __name__ == '__main__':
     print('[-] no dong')
 ```
 
-# GOTO
+# TODO
     咕咕咕，CVE-2021-21972本来想找个地方写jsp的，但是ssh公私钥也能凑合用，有时间再填坑。
