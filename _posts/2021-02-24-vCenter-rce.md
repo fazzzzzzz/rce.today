@@ -2,7 +2,7 @@
 title: vCenter RCE
 author: Admin
 date: 2021-02-24 20:21:00 +0800
-categories: [渗透测试]
+categories: [渗透测试, 内网]
 tags: [vsphere]
 ---
 
