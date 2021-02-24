@@ -7,10 +7,10 @@ tags: [vsphere]
 ---
 
 # 开宗明义
-通杀6.0-7.0
+    通杀6.0-7.0版本
 
 # exp
-'
+
 ```python
 import io
 import sys
