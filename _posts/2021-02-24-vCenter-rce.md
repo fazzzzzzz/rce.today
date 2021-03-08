@@ -134,6 +134,16 @@ if __name__ == '__main__':
 > python3.9 vcenter_rce.py https://xxx.xxx.xxx.xxx whoami
 ```
 
+# 漏洞修复
+
+ssh登录到vCenter主机上，执行: 
+```shell
+service-control --stop vsphere-ui
+cp -v /etc/vmware/vsphere-ui/compatibility-matrix.xml /etc/vmware/vsphere-ui/compatibility-matrix.xml.backup
+sed -i 's/<pluginsCompatibility>/<pluginsCompatibility><PluginPackage id="com.vmware.vrops.install" status="incompatible"\/>/g' /etc/vmware/vsphere-ui/compatibility-matrix.xml
+service-control --start vsphere-ui
+```
+
 # TODO
 
 对于CVE-2021-21972本来想找个地方写jsp的，但是没找到通杀位置。写ssh公私钥也能凑合用，有时间再填坑。咕咕咕...
